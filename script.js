@@ -4,40 +4,33 @@ function checkLogin() {
     var errorMessage = document.getElementById("errorMessage");
 
     if (username === "Ryuken" && password === "123456") {
-        errorMessage.innerHTML = "";
+        errorMessage.innerHTML = ""; // Clear error message
         alert("Login successful!");
     } else {
         errorMessage.innerHTML = "YOU GAY YOU DON'T HAVE PERMISSION TO OPEN THIS.";
     }
 }
 
-// Password Strength Meter
-document.getElementById('password').addEventListener('input', function() {
-    const strengthMeter = document.getElementById('strengthMeter');
-    const password = this.value;
-    let strength = password.length * 10;
-    strengthMeter.style.width = strength + '%';
-    strengthMeter.style.background = strength > 50 ? 'limegreen' : 'red';
-});
+// Snowfall function
+const snowflakesCount = 100;
+const createSnowflake = () => {
+    const snowflake = document.createElement('div');
+    snowflake.classList.add('snowflake');
+    snowflake.style.left = `${Math.random() * 100}vw`;
+    snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
+    snowflake.style.fontSize = `${Math.random() * 10 + 10}px`;
+    snowflake.innerHTML = '❄';
+    document.body.appendChild(snowflake);
 
-// Toggle Password Visibility
-function togglePassword() {
-    var passwordInput = document.getElementById("password");
-    passwordInput.type = passwordInput.type === "password" ? "text" : "password";
-}
-
-// Dark/Light Mode Toggle
-function toggleTheme() {
-    document.body.classList.toggle("dark-mode");
-}
-
-// Snowfall Effect
-for (let i = 0; i < 50; i++) {
     setTimeout(() => {
-        let snowflake = document.createElement('div');
-        snowflake.classList.add('snowflake');
-        snowflake.innerHTML = '❄';
-        document.body.appendChild(snowflake);
-        setTimeout(() => snowflake.remove(), 5000);
-    }, i * 200);
+        snowflake.remove();
+    }, 5000);
 }
+
+for (let i = 0; i < snowflakesCount; i++) {
+    setTimeout(createSnowflake, i * 100);
+}
+
+setInterval(() => {
+    createSnowflake();
+}, 300);

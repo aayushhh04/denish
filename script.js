@@ -3,7 +3,7 @@ function checkLogin() {
     var password = document.getElementById("password").value;
     var errorMessage = document.getElementById("errorMessage");
 
-    if (username === "Ryuken" && password === "123456") {
+    if (username === "aayushh && password === "69") {
         errorMessage.innerHTML = ""; // Clear error message
         alert("Login successful!");
     } else {
